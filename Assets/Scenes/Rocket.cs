@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,6 +23,11 @@ public class Rocket : MonoBehaviour
     enum State { Alive, Dying, Transcending }
     State state = State.Alive;
 
+    bool collisionsDisabled = false;
+
+    int currentLevel = 0;
+    int maxLevel = 3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,11 +43,28 @@ public class Rocket : MonoBehaviour
             Rotation();
             Thrust();
         }
+
+        if (Debug.isDebugBuild)
+        {
+            RespondToDebugKeys();
+        }
+    }
+
+    private void RespondToDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            collisionsDisabled = !collisionsDisabled;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive) { return; } // ignore collisions when dead
+        if (state != State.Alive || collisionsDisabled) { return; } // ignore collisions when dead
 
         switch (collision.gameObject.tag)
         {
@@ -78,12 +101,21 @@ public class Rocket : MonoBehaviour
 
     private void LoadFirstLevel()
     {
-        SceneManager.LoadScene(0);
+        currentLevel = 0;
+        SceneManager.LoadScene(currentLevel);
     }
 
     private void LoadNextLevel()
     {
-        SceneManager.LoadScene(1); // todo allow for more than one level
+        currentLevel++;
+        if (currentLevel <= maxLevel)
+        {
+            SceneManager.LoadScene(currentLevel);
+        }
+        else
+        {
+            SceneManager.LoadScene(maxLevel - 1);
+        }
     }
 
     private void Rotation()
