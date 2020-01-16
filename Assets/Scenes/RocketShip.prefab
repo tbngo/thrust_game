@@ -439,6 +439,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rcsThrust: 150
   mainThrust: 1000
+  mainEngine: {fileID: 8300000, guid: 37d277eb320e84559aa629cc00bc2737, type: 3}
+  deathSound: {fileID: 8300000, guid: 948d6bb506af54b81b9f26f602330ffb, type: 3}
+  successSound: {fileID: 8300000, guid: 1608f1b52db0e414bb6609316a066221, type: 3}
 --- !u!82 &7644526747166444350
 AudioSource:
   m_ObjectHideFlags: 0
@@ -449,7 +452,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6673574252fe44953a8e18023eddce99, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.29
   m_Pitch: 0.7
