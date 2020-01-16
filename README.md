@@ -1,2 +1,2 @@
 # thrust_game
-Unity Thrust Game
+Unity Thrust Clone
