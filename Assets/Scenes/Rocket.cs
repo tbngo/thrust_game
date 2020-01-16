@@ -25,9 +25,6 @@ public class Rocket : MonoBehaviour
 
     bool collisionsDisabled = false;
 
-    int currentLevel = 0;
-    int maxLevel = 3;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -101,20 +98,21 @@ public class Rocket : MonoBehaviour
 
     private void LoadFirstLevel()
     {
-        currentLevel = 0;
-        SceneManager.LoadScene(currentLevel);
+        
+        SceneManager.LoadScene(0);
     }
 
     private void LoadNextLevel()
     {
-        currentLevel++;
-        if (currentLevel <= maxLevel)
+        int currentLevel = SceneManager.GetActiveScene().buildIndex;
+        int nextLevel = currentLevel + 1;
+        if (nextLevel != SceneManager.sceneCountInBuildSettings)
         {
-            SceneManager.LoadScene(currentLevel);
+            SceneManager.LoadScene(nextLevel);
         }
         else
         {
-            SceneManager.LoadScene(maxLevel - 1);
+            LoadFirstLevel();
         }
     }
 
