@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{179D0DB0-61C9-A4F5-CBE3-8629991C954F}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scenes/Oscillator.cs">
+    <Files>
+      <File FileName="Assets/Rocket.cs" Line="73" Column="31" />
+      <File FileName="Assets/Scenes/Oscillator.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="3_Thrust" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scenes" expanded="True">
+                <Node name="Oscillator.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="5bbc10ab-be1a-45eb-9d76-48abb19034b6" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
