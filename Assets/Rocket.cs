@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
+    [SerializeField] float rcsThrust = 150f;
+    [SerializeField] float mainThrust = 90f;
+    
     Rigidbody rigidBody;
     AudioSource audioData;
 
@@ -24,14 +27,16 @@ public class Rocket : MonoBehaviour
     private void Rotation()
     {
         rigidBody.freezeRotation = true; // take manual control of the rotation
+        
+        float rotationThisFrame = rcsThrust * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.A)) // only able to either rotate left or right
         {
-            transform.Rotate(Vector3.forward);
+            transform.Rotate(Vector3.forward * rotationThisFrame);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(-Vector3.forward);
+            transform.Rotate(-Vector3.forward * rotationThisFrame);
         }
 
         rigidBody.freezeRotation = false; // resume physics control of rotation
@@ -39,17 +44,19 @@ public class Rocket : MonoBehaviour
 
     private void Thrust()
     {
+        float thrustThisFrame = mainThrust * Time.deltaTime;
+
         if (Input.GetKey(KeyCode.Space)) // able to thrust while rotating
         {
-            rigidBody.AddRelativeForce(Vector3.up);
+            rigidBody.AddRelativeForce(Vector3.up * thrustThisFrame);
             if (!audioData.isPlaying)
             {
-                audioData.Stop();
+                audioData.Play();
             }
         }
         else
         {
-            audioData.Pause();
+            audioData.Stop();
         }
     }
 }
